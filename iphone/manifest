@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 2
+architectures: armv7 arm64 i386 x86_64
+description: S3FileTransferManager
+author: Terry Morgan
+license: Specify your license
+copyright: Copyright (c) 2015 by Your Company
+
+# these should not be edited
+name: S3FileTransferManager
+moduleid: com.thevirtualforge.s3filetransfermanager
+guid: 451adec7-56f8-4023-9653-5b922a703dca
+platform: iphone
+minsdk: 3.5.1.GA

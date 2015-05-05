@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		24416B8111C4CA220047AFDD /* Build & Test */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 24416B8A11C4CA520047AFDD /* Build configuration list for PBXAggregateTarget "Build & Test" */;
+			buildPhases = (
+				24416B8011C4CA220047AFDD /* ShellScript */,
+			);
+			dependencies = (
+				24416B8511C4CA280047AFDD /* PBXTargetDependency */,
+			);
+			name = "Build & Test";
+			productName = "Build & test";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		24DD6CF91134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.h */; };
+		24DD6CFA1134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.m */; };
+		24DE9E1111C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.h */; };
+		24DE9E1211C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m */; };
+		AA747D9F0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		FFEF0EF61AF3DB390050BA79 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEF0EF51AF3DB390050BA79 /* libsqlite3.dylib */; };
+		FFEF0EF81AF3DB440050BA79 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEF0EF71AF3DB440050BA79 /* libz.dylib */; };
+		FFEF0EFA1AF3DB500050BA79 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEF0EF91AF3DB500050BA79 /* SystemConfiguration.framework */; };
+		FFF3FBA71AF92B840058C2D6 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3FB951AF92B370058C2D6 /* AWSCore.framework */; };
+		FFF3FBA81AF92B840058C2D6 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3FB961AF92B370058C2D6 /* AWSS3.framework */; };
+		FFF3FBA91AF92B840058C2D6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3FB971AF92B370058C2D6 /* Bolts.framework */; };
+		FFF3FBAA1AF92B840058C2D6 /* GZIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3FB981AF92B370058C2D6 /* GZIP.framework */; };
+		FFF3FBAB1AF92B840058C2D6 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3FB991AF92B370058C2D6 /* Mantle.framework */; };
+		FFF3FBAC1AF92B840058C2D6 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3FB9A1AF92B370058C2D6 /* Reachability.framework */; };
+		FFF3FBAD1AF92B840058C2D6 /* TMCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3FB9B1AF92B370058C2D6 /* TMCache.framework */; };
+		FFF3FBAE1AF92B840058C2D6 /* UICKeyChainStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3FB9C1AF92B370058C2D6 /* UICKeyChainStore.framework */; };
+		FFF3FBAF1AF92B840058C2D6 /* XMLDictionary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3FB9D1AF92B370058C2D6 /* XMLDictionary.framework */; };
+		FFF3FBC01AF934BC0058C2D6 /* cognito-identity-2014-06-30.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = FFF3FBB81AF932FB0058C2D6 /* cognito-identity-2014-06-30.json */; };
+		FFF3FBC11AF934BC0058C2D6 /* s3-2006-03-01.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = FFF3FBB91AF932FB0058C2D6 /* s3-2006-03-01.json */; };
+		FFF3FBC31AF936B30058C2D6 /* cognito-identity-2014-06-30.json in Resources */ = {isa = PBXBuildFile; fileRef = FFF3FBB81AF932FB0058C2D6 /* cognito-identity-2014-06-30.json */; };
+		FFF3FBC41AF936B30058C2D6 /* s3-2006-03-01.json in Resources */ = {isa = PBXBuildFile; fileRef = FFF3FBB91AF932FB0058C2D6 /* s3-2006-03-01.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		24416B8411C4CA280047AFDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = S3FileTransferManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FFF3FBBF1AF934AA0058C2D6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				FFF3FBC01AF934BC0058C2D6 /* cognito-identity-2014-06-30.json in CopyFiles */,
+				FFF3FBC11AF934BC0058C2D6 /* s3-2006-03-01.json in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		24DD6CF71134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComThevirtualforgeS3filetransfermanagerModule.h; path = Classes/ComThevirtualforgeS3filetransfermanagerModule.h; sourceTree = "<group>"; };
+		24DD6CF81134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComThevirtualforgeS3filetransfermanagerModule.m; path = Classes/ComThevirtualforgeS3filetransfermanagerModule.m; sourceTree = "<group>"; };
+		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
+		24DE9E0F11C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComThevirtualforgeS3filetransfermanagerModuleAssets.h; path = Classes/ComThevirtualforgeS3filetransfermanagerModuleAssets.h; sourceTree = "<group>"; };
+		24DE9E1011C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComThevirtualforgeS3filetransfermanagerModuleAssets.m; path = Classes/ComThevirtualforgeS3filetransfermanagerModuleAssets.m; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComThevirtualforgeS3filetransfermanager_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libComThevirtualforgeS3filetransfermanager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComThevirtualforgeS3filetransfermanager.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFEF0EF51AF3DB390050BA79 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		FFEF0EF71AF3DB440050BA79 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		FFEF0EF91AF3DB500050BA79 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FFF3FB951AF92B370058C2D6 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = platform/AWSCore.framework; sourceTree = "<group>"; };
+		FFF3FB961AF92B370058C2D6 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = platform/AWSS3.framework; sourceTree = "<group>"; };
+		FFF3FB971AF92B370058C2D6 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = platform/Bolts.framework; sourceTree = "<group>"; };
+		FFF3FB981AF92B370058C2D6 /* GZIP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GZIP.framework; path = platform/GZIP.framework; sourceTree = "<group>"; };
+		FFF3FB991AF92B370058C2D6 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = platform/Mantle.framework; sourceTree = "<group>"; };
+		FFF3FB9A1AF92B370058C2D6 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = platform/Reachability.framework; sourceTree = "<group>"; };
+		FFF3FB9B1AF92B370058C2D6 /* TMCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMCache.framework; path = platform/TMCache.framework; sourceTree = "<group>"; };
+		FFF3FB9C1AF92B370058C2D6 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UICKeyChainStore.framework; path = platform/UICKeyChainStore.framework; sourceTree = "<group>"; };
+		FFF3FB9D1AF92B370058C2D6 /* XMLDictionary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMLDictionary.framework; path = platform/XMLDictionary.framework; sourceTree = "<group>"; };
+		FFF3FBB81AF932FB0058C2D6 /* cognito-identity-2014-06-30.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cognito-identity-2014-06-30.json"; sourceTree = "<group>"; };
+		FFF3FBB91AF932FB0058C2D6 /* s3-2006-03-01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s3-2006-03-01.json"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFF3FBA71AF92B840058C2D6 /* AWSCore.framework in Frameworks */,
+				FFF3FBA81AF92B840058C2D6 /* AWSS3.framework in Frameworks */,
+				FFF3FBA91AF92B840058C2D6 /* Bolts.framework in Frameworks */,
+				FFF3FBAA1AF92B840058C2D6 /* GZIP.framework in Frameworks */,
+				FFF3FBAB1AF92B840058C2D6 /* Mantle.framework in Frameworks */,
+				FFF3FBAC1AF92B840058C2D6 /* Reachability.framework in Frameworks */,
+				FFF3FBAD1AF92B840058C2D6 /* TMCache.framework in Frameworks */,
+				FFF3FBAE1AF92B840058C2D6 /* UICKeyChainStore.framework in Frameworks */,
+				FFF3FBAF1AF92B840058C2D6 /* XMLDictionary.framework in Frameworks */,
+				FFEF0EFA1AF3DB500050BA79 /* SystemConfiguration.framework in Frameworks */,
+				FFEF0EF81AF3DB440050BA79 /* libz.dylib in Frameworks */,
+				FFEF0EF61AF3DB390050BA79 /* libsqlite3.dylib in Frameworks */,
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libComThevirtualforgeS3filetransfermanager.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* S3FileTransferManager */ = {
+			isa = PBXGroup;
+			children = (
+				FFF3FBB81AF932FB0058C2D6 /* cognito-identity-2014-06-30.json */,
+				FFF3FBB91AF932FB0058C2D6 /* s3-2006-03-01.json */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = S3FileTransferManager;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FFF3FB951AF92B370058C2D6 /* AWSCore.framework */,
+				FFF3FB961AF92B370058C2D6 /* AWSS3.framework */,
+				FFF3FB971AF92B370058C2D6 /* Bolts.framework */,
+				FFF3FB981AF92B370058C2D6 /* GZIP.framework */,
+				FFF3FB991AF92B370058C2D6 /* Mantle.framework */,
+				FFF3FB9A1AF92B370058C2D6 /* Reachability.framework */,
+				FFF3FB9B1AF92B370058C2D6 /* TMCache.framework */,
+				FFF3FB9C1AF92B370058C2D6 /* UICKeyChainStore.framework */,
+				FFF3FB9D1AF92B370058C2D6 /* XMLDictionary.framework */,
+				FFEF0EF91AF3DB500050BA79 /* SystemConfiguration.framework */,
+				FFEF0EF71AF3DB440050BA79 /* libz.dylib */,
+				FFEF0EF51AF3DB390050BA79 /* libsqlite3.dylib */,
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24DE9E0F11C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.h */,
+				24DE9E1011C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m */,
+				24DD6CF71134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.h */,
+				24DD6CF81134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch */,
+				24DD6D1B1134B66800162E58 /* titanium.xcconfig */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch in Headers */,
+				24DD6CF91134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.h in Headers */,
+				24DE9E1111C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* S3FileTransferManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "S3FileTransferManager" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+				FFF3FBBF1AF934AA0058C2D6 /* CopyFiles */,
+				FFF3FBC21AF936AB0058C2D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = S3FileTransferManager;
+			productName = S3FileTransferManager;
+			productReference = D2AAC07E0554694100DB518D /* libComThevirtualforgeS3filetransfermanager.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+			};
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "S3FileTransferManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* S3FileTransferManager */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* S3FileTransferManager */,
+				24416B8111C4CA220047AFDD /* Build & Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FFF3FBC21AF936AB0058C2D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFF3FBC31AF936B30058C2D6 /* cognito-identity-2014-06-30.json in Resources */,
+				FFF3FBC41AF936B30058C2D6 /* s3-2006-03-01.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24416B8011C4CA220047AFDD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here\n\npython \"${TITANIUM_SDK}/titanium.py\" run --dir=\"${PROJECT_DIR}\"\nexit $?\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24DD6CFA1134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.m in Sources */,
+				24DE9E1211C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		24416B8511C4CA280047AFDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* S3FileTransferManager */;
+			targetProxy = 24416B8411C4CA280047AFDD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DSTROOT = /tmp/ComThevirtualforgeS3filetransfermanager.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks",
+					"/Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/extras",
+					"/Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/third-party",
+					"$(PROJECT_DIR)/platform",
+				);
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComThevirtualforgeS3filetransfermanager_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"-DTI_POST_1_2",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComThevirtualforgeS3filetransfermanager;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/ComThevirtualforgeS3filetransfermanager.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks",
+					"/Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/extras",
+					"/Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/third-party",
+					"$(PROJECT_DIR)/platform",
+				);
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComThevirtualforgeS3filetransfermanager_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "-DTI_POST_1_2";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComThevirtualforgeS3filetransfermanager;
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DSTROOT = /tmp/ComThevirtualforgeS3filetransfermanager.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComThevirtualforgeS3filetransfermanager_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"-DTI_POST_1_2",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComThevirtualforgeS3filetransfermanager;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libstdc++";
+				DSTROOT = /tmp/ComThevirtualforgeS3filetransfermanager.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComThevirtualforgeS3filetransfermanager_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DTI_POST_1_2";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComThevirtualforgeS3filetransfermanager;
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		24416B8211C4CA220047AFDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Build & test";
+			};
+			name = Debug;
+		};
+		24416B8311C4CA220047AFDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Build & test";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "S3FileTransferManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "S3FileTransferManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24416B8A11C4CA520047AFDD /* Build configuration list for PBXAggregateTarget "Build & Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24416B8211C4CA220047AFDD /* Debug */,
+				24416B8311C4CA220047AFDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
