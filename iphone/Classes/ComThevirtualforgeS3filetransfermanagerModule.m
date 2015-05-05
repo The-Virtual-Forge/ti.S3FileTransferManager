@@ -2,7 +2,7 @@
  * S3FileTransferManager
  *
  * Created by Terry Morgan
- * Copyright (c) 2015 Your Company. All rights reserved.
+ * Copyright (c) 2015 The Virtual Forge. All rights reserved.
  */
 
 #import <AWSCore/AWSCore.h>
