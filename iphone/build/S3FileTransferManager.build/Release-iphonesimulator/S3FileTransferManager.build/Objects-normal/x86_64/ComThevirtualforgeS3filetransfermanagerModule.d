@@ -85,6 +85,7 @@ dependencies: \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiFile.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiBuffer.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiBlob.h \
+  /Users/terrymorgan/Development/TiModules/S3FileTransferManager/iphone/Classes/ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiHost.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/Bridge.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiStylesheet.h

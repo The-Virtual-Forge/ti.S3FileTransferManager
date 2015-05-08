@@ -10,6 +10,7 @@
 //#import <AWSCognito/AWSCognito.h>
 
 #import "ComThevirtualforgeS3filetransfermanagerModule.h"
+#import "ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h"
 #import "TiBase.h"
 #import "TiBlob.h"
 #import "TiHost.h"
@@ -33,13 +34,6 @@
 
 -(void)_destroy
 {
-    // Make sure to release the callback objects
-    RELEASE_TO_NIL(successCallback);
-    RELEASE_TO_NIL(cancelledCallback);
-    RELEASE_TO_NIL(pausedCallback);
-    RELEASE_TO_NIL(errorCallback);
-    RELEASE_TO_NIL(progressCallback);
-    
     [super _destroy];
 }
 
@@ -58,6 +52,10 @@
     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionEUWest1 credentialsProvider:credentialsProvider];
     
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+    
+    transferManager = [AWSS3TransferManager defaultS3TransferManager];
+    
+    currentUploads = [NSMutableArray new];
     
 	NSLog(@"[INFO] %@ loaded",self);
 }
@@ -113,17 +111,6 @@
 
 #pragma Public APIs
 
--(void)initialize:(id)args
-{
-    ENSURE_SINGLE_ARG(args,NSDictionary);
-    
-    successCallback = [[args objectForKey:@"success"] retain];
-    cancelledCallback = [[args objectForKey:@"cancelled"] retain];
-    errorCallback = [[args objectForKey:@"error"] retain];
-    pausedCallback = [[args objectForKey:@"paused"] retain];
-    progressCallback = [[args objectForKey:@"progress"] retain];
-}
-
 -(void)setRegion:(id)value
 {
     ENSURE_STRING(value);
@@ -146,57 +133,59 @@
     return identityPoolId;
 }
 
--(void)upload:(id)args
+-(void)upload:(NSArray *)ur
 {
-    ENSURE_SINGLE_ARG(args,NSDictionary);
+    [currentUploads insertObject:ur atIndex:0];
     
-    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
-    AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-    uploadRequest.bucket = [[args objectForKey:@"bucket"] retain];
-    uploadRequest.key = [[args objectForKey:@"key"] retain];
-    NSURL *fileURL = [NSURL URLWithString:[[args objectForKey:@"body"] retain]];
-    NSLog(@"body = %@", [[args objectForKey:@"body"] retain]);
-    uploadRequest.body = fileURL;
-//    uploadRequest.contentLength = fileBlob.size;
+//    NSLog(@"ur class = %@", [ur class]);
     
-    NSLog(@"Starting upload request");
+    ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy *proxy = [ur objectAtIndex:0];
+    
+//    NSLog(@"proxy class = %@", [proxy class]);
+    
+    AWSS3TransferManagerUploadRequest *uploadRequest = [proxy valueForKey:@"uploadRequest"];
+    
+//    NSLog(@"uploadRequest class = %@", [uploadRequest class]);
+//    
+//    NSLog(@"uploadRequest.bucket = %@", uploadRequest.bucket);
+//    NSLog(@"uploadRequest.body = %@", uploadRequest.body);
+//    NSLog(@"uploadRequest.key = %@", uploadRequest.key);
     
     [[transferManager upload:uploadRequest] continueWithBlock:^id(BFTask *task) {
+//        NSLog(@"Entering upload task block with task = %@", task);
         if (task.error) {
             if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
                 switch (task.error.code) {
                     case AWSS3TransferManagerErrorCancelled:
-                    {
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            NSLog(@"Upload cancelled");
-//                            id result = [cancelledCallback call:args thisObject:nil];
+                            [proxy onCancelled];
                         });
-                    }
                         break;
+                        
                     case AWSS3TransferManagerErrorPaused:
-                    {
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            NSLog(@"Upload paused");
-//                            id result = [pausedCallback call:args thisObject:nil];
+                            [proxy onError:task.error];
                         });
-                    }
                         break;
                         
                     default:
-                        NSLog(@"Upload failed: [%@]", task.error);
-//                        id result = [errorCallback call:args thisObject:nil];
-                        break;
+//                        NSLog(@"Upload error: %@", task.error);
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [proxy onError:task.error];
+                        });
                 }
             } else {
-                NSLog(@"Upload failed: [%@]", task.error);
-//                id result = [errorCallback call:args thisObject:nil];
+//                NSLog(@"Upload error: %@", task.error);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [proxy onError:task.error];
+                });
             }
         }
         
         if (task.result) {
+//            NSLog(@"Upload success: %@", task.result);
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"Upload success: [%@]", task.result);
-//                id result = [successCallback call:args thisObject:nil];
+                [proxy onSuccess:task.result];
             });
         }
         
@@ -204,24 +193,34 @@
     }];
 }
 
--(void)pause:(id)args
+-(void)pauseAll
 {
-    
+    [currentUploads enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[AWSS3TransferManagerUploadRequest class]]) {
+            AWSS3TransferManagerUploadRequest *uploadRequest = obj;
+            [[uploadRequest pause] continueWithBlock:^id(BFTask *task) {
+                if (task.error) {
+                    NSLog(@"The pause request failed: [%@]", task.error);
+                }
+                return nil;
+            }];
+        }
+    }];
 }
 
--(void)resume:(id)args
+-(void)resumeAll
 {
-    
-}
-
--(void)pauseAll:(id)args
-{
-    
-}
-
--(void)resumeAll:(id)args
-{
-    
+    [currentUploads enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[AWSS3TransferManagerUploadRequest class]]) {
+            AWSS3TransferManagerUploadRequest *uploadRequest = obj;
+            [[transferManager upload:uploadRequest] continueWithBlock:^id(BFTask *task) {
+                if (task.error) {
+                    NSLog(@"The resume request failed: [%@]", task.error);
+                }
+                return nil;
+            }];
+        }
+    }];
 }
 
 @end

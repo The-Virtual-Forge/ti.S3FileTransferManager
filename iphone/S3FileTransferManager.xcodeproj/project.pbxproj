@@ -28,6 +28,8 @@
 		24DE9E1211C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m */; };
 		AA747D9F0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		FFD026781AFBA7210082E8B8 /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD026771AFBA7210082E8B8 /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h */; };
+		FFD0267C1AFBA7B40082E8B8 /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD0267B1AFBA7B40082E8B8 /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.m */; };
 		FFEF0EF61AF3DB390050BA79 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEF0EF51AF3DB390050BA79 /* libsqlite3.dylib */; };
 		FFEF0EF81AF3DB440050BA79 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEF0EF71AF3DB440050BA79 /* libz.dylib */; };
 		FFEF0EFA1AF3DB500050BA79 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEF0EF91AF3DB500050BA79 /* SystemConfiguration.framework */; };
@@ -79,6 +81,8 @@
 		AA747D9E0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComThevirtualforgeS3filetransfermanager_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libComThevirtualforgeS3filetransfermanager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComThevirtualforgeS3filetransfermanager.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFD026771AFBA7210082E8B8 /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h; path = Classes/ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h; sourceTree = "<group>"; };
+		FFD0267B1AFBA7B40082E8B8 /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.m; path = Classes/ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.m; sourceTree = "<group>"; };
 		FFEF0EF51AF3DB390050BA79 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		FFEF0EF71AF3DB440050BA79 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		FFEF0EF91AF3DB500050BA79 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -167,6 +171,8 @@
 				24DE9E1011C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.h */,
 				24DD6CF81134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.m */,
+				FFD026771AFBA7210082E8B8 /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h */,
+				FFD0267B1AFBA7B40082E8B8 /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -189,6 +195,7 @@
 			files = (
 				AA747D9F0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.h in Headers */,
+				FFD026781AFBA7210082E8B8 /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +286,7 @@
 			files = (
 				24DD6CFA1134B3F500162E58 /* ComThevirtualforgeS3filetransfermanagerModule.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m in Sources */,
+				FFD0267C1AFBA7B40082E8B8 /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

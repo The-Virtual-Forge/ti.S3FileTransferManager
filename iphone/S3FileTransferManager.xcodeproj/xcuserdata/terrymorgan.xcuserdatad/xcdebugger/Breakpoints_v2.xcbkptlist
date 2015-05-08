@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/ComThevirtualforgeS3filetransfermanagerModule.m"
-            timestampString = "452529676.573824"
+            filePath = "Classes/ComThevirtualforgeS3filetransfermanagerModule.h"
+            timestampString = "452690901.708277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "-upload:"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "@interface ComThevirtualforgeS3filetransfermanagerModule"
+            landmarkType = "2">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.m"
+            timestampString = "452797497.772379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "-onError:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
