@@ -1,6 +1,40 @@
+function doUpload() {
+    var uploadRequest = S3TransferManagerModule.createAWSS3TransferManagerUploadRequest({
+        bucket: "my-bucket-name",
+        key: file.name,
+        body: file.nativePath,
+        progressCallback: function(e) {
+            console.log("[app.js] Upload progress");
+            console.log(e);
+        },
+        successCallback: function(e) {
+            console.log("[app.js] Upload complete");
+            console.log(e);
+        },
+        errorCallback: function(e) {
+            console.log("[app.js] Upload error");
+            console.log(e);
+        },
+        cancelledCallback: function(e) {
+            console.log("[app.js] Upload cancelled");
+            console.log(e);
+        },
+        pausedCallback: function(e) {
+            console.log("[app.js] Upload paused");
+            console.log(e);
+        }
+    });
+
+    S3TransferManager.upload(uploadRequest);
+}
+
 Titanium.UI.setBackgroundColor('#000');
 
-var S3TransferManager = require("com.thevirtualforge.s3filetransfermanager");
+var S3TransferManagerModule = require("com.thevirtualforge.s3filetransfermanager");
+var S3TransferManager = S3TransferManagerModule.createAWSS3TransferManager({
+    identityPoolId: "eu-west-1:xxxx-xxxx-xxxx-xxxx-xxxx",
+    region: "euwest-1"
+});
 
 var win1 = Titanium.UI.createWindow({
     title:"S3 Transfer Manager test",
@@ -47,5 +81,4 @@ selectImageButton.addEventListener("click",function() {
 });
 
 win1.add(selectImageButton);
-
 win1.open();
