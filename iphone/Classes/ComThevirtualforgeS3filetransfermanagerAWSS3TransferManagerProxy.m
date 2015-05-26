@@ -21,25 +21,25 @@
     NSString *regionProp = [properties objectForKey:@"region"];
     AWSRegionType *regionType;
     
-    if ([regionProp isEqualToString:@"eu-west1"]) {
+    if ([regionProp isEqualToString:@"eu-west-1"]) {
         regionType = AWSRegionEUWest1;
-    } else if ([regionProp isEqualToString:@"us-east1"]) {
+    } else if ([regionProp isEqualToString:@"us-east-1"]) {
         regionType = AWSRegionUSEast1;
-    } else if ([regionProp isEqualToString:@"us-west1"]) {
+    } else if ([regionProp isEqualToString:@"us-west-1"]) {
         regionType = AWSRegionUSWest1;
-    } else if ([regionProp isEqualToString:@"us-west2"]) {
+    } else if ([regionProp isEqualToString:@"us-west-2"]) {
         regionType = AWSRegionUSWest2;
-    } else if ([regionProp isEqualToString:@"eu-central1"]) {
+    } else if ([regionProp isEqualToString:@"eu-central-1"]) {
         regionType = AWSRegionEUCentral1;
-    } else if ([regionProp isEqualToString:@"ap-southeast1"]) {
+    } else if ([regionProp isEqualToString:@"ap-southeast-1"]) {
         regionType = AWSRegionAPSoutheast1;
-    } else if ([regionProp isEqualToString:@"ap-northeast1"]) {
+    } else if ([regionProp isEqualToString:@"ap-northeast-1"]) {
         regionType = AWSRegionAPNortheast1;
-    } else if ([regionProp isEqualToString:@"ap-southeast2"]) {
+    } else if ([regionProp isEqualToString:@"ap-southeast-2"]) {
         regionType = AWSRegionAPSoutheast2;
-    } else if ([regionProp isEqualToString:@"sa-east1"]) {
+    } else if ([regionProp isEqualToString:@"sa-east-1"]) {
         regionType = AWSRegionSAEast1;
-    } else if ([regionProp isEqualToString:@"cn-north1"]) {
+    } else if ([regionProp isEqualToString:@"cn-north-1"]) {
         regionType = AWSRegionCNNorth1;
     } else {
         [NSException raise:@"Invalid region param" format:@"Region param of %@ is invalid", regionProp];
