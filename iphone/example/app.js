@@ -33,7 +33,7 @@ Titanium.UI.setBackgroundColor('#000');
 var S3TransferManagerModule = require("com.thevirtualforge.s3filetransfermanager");
 var S3TransferManager = S3TransferManagerModule.createAWSS3TransferManager({
     identityPoolId: "eu-west-1:xxxx-xxxx-xxxx-xxxx-xxxx",
-    region: "euwest-1"
+    region: "eu-west-1"
 });
 
 var win1 = Titanium.UI.createWindow({
