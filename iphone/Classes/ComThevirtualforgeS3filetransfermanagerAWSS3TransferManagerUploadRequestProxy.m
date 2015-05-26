@@ -16,51 +16,40 @@
 
 -(void)_initWithProperties:(NSDictionary *)properties
 {
-//    NSLog(@"Initializing upload request with properties: %@", properties);
-    
+    NSLog(@"_initWithProperties");
     AWSS3TransferManagerUploadRequest *ur =[AWSS3TransferManagerUploadRequest new];
     
     ur.bucket = [properties objectForKey:@"bucket"];
     ur.key = [properties objectForKey:@"key"];
     ur.body = [NSURL URLWithString:[properties objectForKey:@"body"]];
+    
+    KrollCallback* progressCallback = [properties objectForKey:@"progressCallback"];
 
-//    NSLog(@"Setting uploadProgress callback");
+    NSLog(@"Setting uploadProgress callback");
     
-// TODO: replace the progress event with a callback as consuming JS layer seems to choke on
-// rapidly fired events
-    
-//    ur.uploadProgress =  ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend){
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            if ([self _hasListeners:@"progress"]) {
-//                
-//                NSDictionary *eventPayload = @{
-//                                               @"bytesSent": [NSNumber numberWithLongLong:bytesSent],
-//                                               @"totalBytesSent": [NSNumber numberWithLongLong:totalBytesSent],
-//                                               @"totalBytesExpectedToSend": [NSNumber numberWithLongLong:totalBytesExpectedToSend],
-//                                               @"bucket": bucket,
-//                                               @"key": key
-//                                               };
-//                NSLog(@"Firing progress event...");
-//                [self fireEvent:@"progress" withObject:nil];
-//            } else {
-//                NSLog(@"Proxy has no progress listeners");
-//            }
-//        });
-//    };
-    
-//    NSLog(@"ur = %@", ur);
+    ur.uploadProgress =  ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend){
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (progressCallback) {
+                NSDictionary *eventData = @{
+                                           @"bytesSent": [NSNumber numberWithLongLong:bytesSent],
+                                           @"totalBytesSent": [NSNumber numberWithLongLong:totalBytesSent],
+                                           @"totalBytesExpectedToSend": [NSNumber numberWithLongLong:totalBytesExpectedToSend],
+                                           @"bucket": bucket,
+                                           @"key": key
+                                           };
+                NSArray* arrayOfValues = [NSArray arrayWithObjects: eventData, nil];
+                [progressCallback call:arrayOfValues thisObject:nil];
+            }
+        });
+    };
     
     [self setUploadRequest:ur];
-    
-//    NSLog(@"uploadRequest = %@", uploadRequest);
-    
-//    NSLog(@"Calling super _initWithProperties");
-    
     [super _initWithProperties:properties];
 }
 
 -(void)_destroy
 {
+    NSLog(@"_destroy");
     [super _destroy];
 }
 
@@ -68,11 +57,16 @@
 
 -(void)dealloc
 {
+    NSLog(@"dealloc");
     // release any resources that have been retained by the module
     [uploadRequest release];
     [key release];
     [bucket release];
     [body release];
+    [successCallback release];
+    [errorCallback release];
+    [cancelledCallback release];
+    [pausedCallback release];
     [super dealloc];
 }
 
@@ -80,8 +74,44 @@
 
 - (AWSS3TransferManagerUploadRequest *)uploadRequest;
 {
-//    NSLog(@"Getting uploadRequest");
     return uploadRequest;
+}
+
+-(NSString *)state
+{
+    NSString *uploadState;
+    
+    if (uploadRequest) {
+        switch (uploadRequest.state) {
+            case AWSS3TransferManagerRequestStateNotStarted:
+                uploadState = @"Not started";
+                break;
+                
+            case AWSS3TransferManagerRequestStateRunning:
+                uploadState = @"Running";
+                break;
+                
+            case AWSS3TransferManagerRequestStatePaused:
+                uploadState = @"Paused";
+                break;
+
+            case AWSS3TransferManagerRequestStateCanceling:
+                uploadState = @"Canceling";
+                break;
+                
+            case AWSS3TransferManagerRequestStateCompleted:
+                uploadState = @"Completed";
+                break;
+                
+            default:
+                uploadState = @"Unknown";
+                break;
+        }
+    } else {
+        uploadState = @"Invalid";
+    }
+
+    return uploadState;
 }
 
 -(NSString *)key
@@ -99,73 +129,134 @@
     return bucket;
 }
 
-- (void)setUploadRequest:(AWSS3TransferManagerUploadRequest *)ur;
+-(KrollCallback *)successCallback
 {
-//    NSLog(@"Setting uploadRequest to %@", ur);
+    return successCallback;
+}
+
+-(KrollCallback *)errorCallback
+{
+    return errorCallback;
+}
+
+-(KrollCallback *)pausedCallback
+{
+    return pausedCallback;
+}
+
+-(KrollCallback *)cancelledCallback
+{
+    return cancelledCallback;
+}
+
+- (void)setUploadRequest:(AWSS3TransferManagerUploadRequest *)ur
+{
     [uploadRequest autorelease];
     uploadRequest = [ur retain];
 }
 
 -(void)setKey:(id)_key
 {
-//    NSLog(@"Setting key to %@", _key);
     [key autorelease];
     key = [TiUtils stringValue:_key];
 }
 
 -(void)setBody:(id)_body
 {
-//    NSLog(@"Setting body to %@", _body);
     [body autorelease];
     body = [NSURL URLWithString:[TiUtils stringValue:_body]];
 }
 
 -(void)setBucket:(id)_bucket
 {
-//    NSLog(@"Setting bucket to %@", _bucket);
     [bucket autorelease];
     bucket = [TiUtils stringValue:_bucket];
 }
 
--(void)pause
+-(void)setSuccessCallback:(KrollCallback *)_successCallback
 {
-    
+    [successCallback autorelease];
+    successCallback = [_successCallback retain];
 }
 
--(void)cancel
+-(void)setErrorCallback:(KrollCallback *)_errorCallback
 {
-    
+    [errorCallback autorelease];
+    errorCallback = [_errorCallback retain];
+}
+
+-(void)setPausedCallback:(KrollCallback *)_pausedCallback
+{
+    [pausedCallback autorelease];
+    pausedCallback = [_pausedCallback retain];
+}
+
+-(void)setCancelledCallback:(KrollCallback *)_cancelledCallback
+{
+    [cancelledCallback autorelease];
+    cancelledCallback = [_cancelledCallback retain];
+}
+
+-(void)pauseUpload:(id)args
+{
+    NSLog(@"Requesting pause...");
+    NSLog(@"%@", uploadRequest);
+    [[uploadRequest pause] continueWithBlock:^id(BFTask *task) {
+        if (task.error) {
+            NSLog(@"The pause request failed: [%@]", task.error);
+        }
+        return nil;
+    }];
+}
+
+-(void)cancel:(id)args
+
+{
+    NSLog(@"cancel");
+    [[uploadRequest cancel] continueWithBlock:^id(BFTask *task) {
+        if (task.error) {
+            NSLog(@"The cancel request failed: [%@]", task.error);
+        }
+        return nil;
+    }];
 }
 
 -(void)onPaused
 {
-//    NSLog(@"Paused event firing...");
-    NSDictionary *eventPayload = @{
-                                   @"success": @false,
-                                   @"cancelled": @false,
-                                   @"paused": @true,
-                                   @"bucket": bucket,
-                                   @"key": key
-                                   };
-    [self fireEvent:@"paused" withObject:eventPayload];
+    NSLog(@"onPaused");
+    if (pausedCallback) {
+        NSDictionary *eventPayload = @{
+                                       @"success": @false,
+                                       @"cancelled": @false,
+                                       @"paused": @true,
+                                       @"bucket": bucket,
+                                       @"key": key
+                                       };
+        NSArray* arrayOfValues = [NSArray arrayWithObjects: eventPayload, nil];
+        NSLog(@"Calling pausedCallback");
+        [pausedCallback call:arrayOfValues thisObject:nil];
+    }
 }
 
 -(void)onCancelled
 {
-//    NSLog(@"Cancelled event firing...");
-    NSDictionary *eventPayload = @{
-                                   @"success": @false,
-                                   @"cancelled": @true,
-                                   @"paused": @false,
-                                   @"bucket": bucket,
-                                   @"key": key
-                                   };
-    [self fireEvent:@"cancelled" withObject:eventPayload];
+    NSLog(@"onCancelled");
+    if (cancelledCallback) {
+        NSDictionary *eventPayload = @{
+                                       @"success": @false,
+                                       @"cancelled": @true,
+                                       @"paused": @false,
+                                       @"bucket": bucket,
+                                       @"key": key
+                                       };
+        NSArray* arrayOfValues = [NSArray arrayWithObjects: eventPayload, nil];
+        [cancelledCallback call:arrayOfValues thisObject:nil];
+    }
 }
 
 -(void)onSuccess:(AWSS3TransferManagerUploadOutput *)result
 {
-    if ([self _hasListeners:@"success"]) {
+    if (successCallback) {
         NSDictionary *eventPayload = @{
                                        @"success": @true,
                                        @"cancelled": @false,
@@ -173,33 +264,34 @@
                                        @"bucket": bucket,
                                        @"key": key,
                                        @"result": @{
-                                            @"ETAG": result.ETag
-//                                            @"serverSideEncryption": result.serverSideEncryption
-                                            }
+                                               @"ETAG": result.ETag
+                                               }
                                        };
-        [self fireEvent:@"success" withObject:eventPayload];
-    } else {
-        NSLog(@"Proxy has no success listeners");
+        
+        NSArray* arrayOfValues = [NSArray arrayWithObjects: eventPayload, nil];
+        [successCallback call:arrayOfValues thisObject:nil];
     }
-
 }
 
 -(void)onError:(NSError *)error
 {
-//    NSLog(@"Error event firing...");
-    NSDictionary *eventPayload = @{
-                                   @"success": @false,
-                                   @"cancelled": @false,
-                                   @"paused": @false,
-                                   @"bucket": bucket,
-                                   @"key": key,
-                                   @"error": @{
-                                                @"code": NUMLONG(error.code),
-                                                @"domain": error.domain,
-                                                @"userInfo": error.userInfo
-                                           }
-                                   };
-    [self fireEvent:@"error" withObject:eventPayload];
+    NSLog(@"onError");
+    if (errorCallback) {
+        NSDictionary *eventPayload = @{
+                                       @"success": @false,
+                                       @"cancelled": @false,
+                                       @"paused": @false,
+                                       @"bucket": bucket,
+                                       @"key": key,
+                                       @"error": @{
+                                               @"code": NUMLONG(error.code),
+                                               @"domain": error.domain,
+                                               @"userInfo": error.userInfo
+                                               }
+                                       };
+        NSArray* arrayOfValues = [NSArray arrayWithObjects: eventPayload, nil];
+        [errorCallback call:arrayOfValues thisObject:nil];
+    }
 }
 
 

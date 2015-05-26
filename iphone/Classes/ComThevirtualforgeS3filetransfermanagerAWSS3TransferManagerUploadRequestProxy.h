@@ -17,19 +17,16 @@
     NSString *bucket;
     NSString *key;
     NSURL *body;
-    
-    NSString *uploadId;
-    NSString *cacheIdentifier;
-    NSMutableArray *completedPartsArray;
-    
-    AWSS3TransferManagerRequestState state;
-    NSUInteger currentUploadingPartNumber;
-    AWSS3UploadPartRequest *currentUploadingPart;
-    int64_t totalSuccessfullySentPartsDataLength;
+    KrollCallback *successCallback;
+    KrollCallback *errorCallback;
+    KrollCallback *pausedCallback;
+    KrollCallback *cancelledCallback;
 }
 
--(void)pause;
--(void)cancel;
+-(NSString *)state;
+
+-(void)pauseUpload:(id)args;
+-(void)cancel:(id)args;
 
 -(void)onCancelled;
 -(void)onPaused;
@@ -40,7 +37,9 @@
 - body;
 - key;
 - bucket;
-
-
+- successCallback;
+- errorCallback;
+- cancelledCallback;
+- pausedCallback;
 
 @end

@@ -9,11 +9,6 @@
 
 @interface ComThevirtualforgeS3filetransfermanagerModule : TiModule
 {
-    NSString* identityPoolId;
-    NSString* region;
-    
-    NSMutableArray *currentUploads;
-    
-    AWSS3TransferManager *transferManager;
+
 }
 @end
