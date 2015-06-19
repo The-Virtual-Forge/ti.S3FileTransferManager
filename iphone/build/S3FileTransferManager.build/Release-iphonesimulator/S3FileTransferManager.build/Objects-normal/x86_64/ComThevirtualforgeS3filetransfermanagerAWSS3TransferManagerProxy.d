@@ -78,6 +78,7 @@ dependencies: \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/KrollObject.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiBindingRunLoop.h \
   /Users/terrymorgan/Development/TiModules/S3FileTransferManager/iphone/Classes/ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h \
+  /Users/terrymorgan/Development/TiModules/S3FileTransferManager/iphone/Classes/DeveloperAuthenticationProvider.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiUtils.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiDimension.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiColor.h \

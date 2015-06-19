@@ -36,6 +36,23 @@ var S3TransferManager = S3TransferManagerModule.createAWSS3TransferManager({
     region: "eu-west-1"
 });
 
+// To use a developer authenticated identity provider, pass in teh following params.
+// This assumes that you have made to AWS.CognitoIdentity.getOpenIdTokenForDeveloperIdentity
+// either via a API or directly elsewhere in your code
+S3TransferManager.initialise({
+    // identityId returned from call to getOpenIdTokenForDeveloperIdentity
+    identityId: "xxxxxx",
+    // token returned from call to getOpenIdTokenForDeveloperIdentity
+    token: "xxxxx",
+    // the name of the developer authenticated identity provider
+    developerAuthProviderName: "my.authentication.provider",
+    // username used in call to getOpenIdTokenForDeveloperIdentity
+    username: "myUsername"
+});
+
+// or to use unauthenticated
+// S3TransferManager.initialise();
+
 var win1 = Titanium.UI.createWindow({
     title:"S3 Transfer Manager test",
     backgroundColor:"#fff"

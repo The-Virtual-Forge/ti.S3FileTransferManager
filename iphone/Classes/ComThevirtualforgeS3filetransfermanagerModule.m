@@ -7,7 +7,7 @@
 
 #import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
-//#import <AWSCognito/AWSCognito.h>
+#import <AWSCognito/AWSCognito.h>
 
 #import "ComThevirtualforgeS3filetransfermanagerModule.h"
 
@@ -44,6 +44,9 @@
 	// this method is called when the module is first loaded
 	// you *must* call the superclass
 	[super startup];
+    
+    // Override point for customization after application launch.
+    // Register if we haven't already
     
 	NSLog(@"[INFO] %@ loaded",self);
 }

@@ -11,14 +11,31 @@
 
 #import "ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.h"
 #import "ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy.h"
+#import "DeveloperAuthenticationProvider.h"
 #import "TiUtils.h"
 
 @implementation ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy
 
 -(void)_initWithProperties:(NSDictionary *)properties
 {
-    NSString *identityPoolId = [properties objectForKey:@"identityPoolId"];
-    NSString *regionProp = [properties objectForKey:@"region"];
+    self.identityPoolId = [properties objectForKey:@"identityPoolId"];
+    self.regionType = [self getRegionTypeWithString:[properties objectForKey:@"region"]];
+    
+    self.username = [properties objectForKey:@"username"];
+    self.token = [properties objectForKey:@"token"];
+    self.identityId = [properties objectForKey:@"identityId"];
+    self.developerAuthProviderName = [properties objectForKey:@"developerAuthProviderName"];
+    
+    [super _initWithProperties:properties];
+}
+
+-(void)_destroy
+{
+    NSLog(@"_destroy");
+    [super _destroy];
+}
+
+-(AWSRegionType *)getRegionTypeWithString:(NSString *)regionProp {
     AWSRegionType *regionType;
     
     if ([regionProp isEqualToString:@"eu-west-1"]) {
@@ -45,25 +62,7 @@
         [NSException raise:@"Invalid region param" format:@"Region param of %@ is invalid", regionProp];
     }
     
-    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
-                                                          initWithRegionType:regionType
-                                                          identityPoolId:identityPoolId];
-    
-    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionEUWest1 credentialsProvider:credentialsProvider];
-    
-    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
-    
-    transferManager = [AWSS3TransferManager defaultS3TransferManager];
-    
-    currentUploads = [NSMutableArray new];
-    
-    [super _initWithProperties:properties];
-}
-
--(void)_destroy
-{
-    NSLog(@"_destroy");
-    [super _destroy];
+    return regionType;
 }
 
 #pragma mark Cleanup
@@ -76,13 +75,49 @@
 
 #pragma Public APIs
 
+-(void)initialise:(id)args
+{
+    AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider alloc];
+    
+    if (self.identityId && self.token && self.developerAuthProviderName) {
+        // Authenticated credentials provider
+        
+        NSDictionary *logins = @{ self.developerAuthProviderName: self.username };
+        
+        DeveloperAuthenticationProvider *identityProvider = [[DeveloperAuthenticationProvider alloc]
+                                                            initWithRegionType:self.regionType
+                                                            identityId:self.identityId
+                                                            identityPoolId:self.identityPoolId
+                                                            logins:logins
+                                                            providerName:self.developerAuthProviderName];
+        
+        [identityProvider setToken:self.token];
+        
+        [credentialsProvider initWithRegionType:self.regionType
+                             identityProvider:identityProvider
+                             unauthRoleArn:nil
+                             authRoleArn:nil];
+    } else {
+        // UNauthenticated credentials provider
+        [credentialsProvider initWithRegionType:self.regionType identityPoolId:self.identityPoolId];
+    }
+
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:self.regionType credentialsProvider:credentialsProvider];
+    
+    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+    
+    self.transferManager = [AWSS3TransferManager defaultS3TransferManager];
+    
+    self.currentUploads = [NSMutableArray new];
+}
+
 -(void)upload:(NSArray *)ur
 {
-    [currentUploads insertObject:ur atIndex:0];
+    [self.currentUploads insertObject:ur atIndex:0];
     ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy *urProxy = [ur objectAtIndex:0];
     AWSS3TransferManagerUploadRequest *uploadRequest = [urProxy valueForKey:@"uploadRequest"];
     
-    [[transferManager upload:uploadRequest] continueWithBlock:^id(BFTask *task) {
+    [[self.transferManager upload:uploadRequest] continueWithBlock:^id(BFTask *task) {
         NSLog(@"Entering upload task block with task = %@", task);
         if (task.error) {
             if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
@@ -153,6 +188,5 @@
     //        }
     //    }];
 }
-
 
 @end

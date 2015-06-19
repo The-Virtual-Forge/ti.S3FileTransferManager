@@ -57,6 +57,14 @@ dependencies: \
   /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/AWSS3.framework/Headers/AWSS3Model.h \
   /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/AWSS3.framework/Headers/AWSS3TransferManager.h \
   /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/AWSS3.framework/Headers/AWSS3PreSignedURL.h \
+  /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/extras/AWSCognito.framework/Headers/AWSCognito.h \
+  /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/extras/AWSCognito.framework/Headers/AWSCognitoService.h \
+  /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/extras/AWSCognito.framework/Headers/AWSCognitoHandlers.h \
+  /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/extras/AWSCognito.framework/Headers/AWSCognitoSyncService.h \
+  /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/extras/AWSCognito.framework/Headers/AWSCognitoSyncModel.h \
+  /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/extras/AWSCognito.framework/Headers/AWSCognitoDataset.h \
+  /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/extras/AWSCognito.framework/Headers/AWSCognitoRecord.h \
+  /Users/terrymorgan/Downloads/aws-ios-sdk-2.1.1/frameworks/extras/AWSCognito.framework/Headers/AWSCognitoConflict.h \
   /Users/terrymorgan/Development/TiModules/S3FileTransferManager/iphone/Classes/ComThevirtualforgeS3filetransfermanagerModule.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiModule.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiProxy.h \

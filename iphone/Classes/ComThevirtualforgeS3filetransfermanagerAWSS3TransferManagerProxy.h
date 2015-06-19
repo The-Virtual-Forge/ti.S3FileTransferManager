@@ -12,9 +12,16 @@
 #import "TiProxy.h"
 
 @interface ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy : TiProxy
-{
-    NSMutableArray *currentUploads;
-    AWSS3TransferManager *transferManager;
-}
+
+@property (strong, nonatomic) NSMutableArray *currentUploads;
+@property (strong, nonatomic) AWSS3TransferManager *transferManager;
+
+@property (strong, nonatomic) NSString *identityPoolId;
+@property AWSRegionType *regionType;
+
+@property (strong, nonatomic) NSString *identityId;
+@property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) NSString *username;
+@property (strong, nonatomic) NSString *developerAuthProviderName;
 
 @end
