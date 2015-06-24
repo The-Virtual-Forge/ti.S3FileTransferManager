@@ -17,10 +17,7 @@
     NSString *bucket;
     NSString *key;
     NSURL *body;
-    KrollCallback *successCallback;
-    KrollCallback *errorCallback;
-    KrollCallback *pausedCallback;
-    KrollCallback *cancelledCallback;
+
 }
 
 -(NSString *)state;
@@ -37,9 +34,5 @@
 - body;
 - key;
 - bucket;
-- successCallback;
-- errorCallback;
-- cancelledCallback;
-- pausedCallback;
 
 @end

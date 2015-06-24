@@ -31,7 +31,6 @@
 
 -(void)_destroy
 {
-    NSLog(@"_destroy");
     [super _destroy];
 }
 
@@ -118,26 +117,22 @@
     AWSS3TransferManagerUploadRequest *uploadRequest = [urProxy valueForKey:@"uploadRequest"];
     
     [[self.transferManager upload:uploadRequest] continueWithBlock:^id(BFTask *task) {
-        NSLog(@"Entering upload task block with task = %@", task);
         if (task.error) {
             if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
                 switch (task.error.code) {
                     case AWSS3TransferManagerErrorCancelled:
-                        NSLog(@"Upload cancelled: %@", task.error);
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [urProxy onCancelled];
                         });
                         break;
                         
                     case AWSS3TransferManagerErrorPaused:
-                        NSLog(@"Upload paused: %@", task.error);
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [urProxy onPaused];
                         });
                         break;
                         
                     default:
-                        NSLog(@"Upload error: %@", task.error);
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [urProxy onError:task.error];
                         });
