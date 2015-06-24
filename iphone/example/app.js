@@ -6,23 +6,24 @@ function doUpload() {
         progressCallback: function(e) {
             console.log("[app.js] Upload progress");
             console.log(e);
-        },
-        successCallback: function(e) {
-            console.log("[app.js] Upload complete");
-            console.log(e);
-        },
-        errorCallback: function(e) {
-            console.log("[app.js] Upload error");
-            console.log(e);
-        },
-        cancelledCallback: function(e) {
-            console.log("[app.js] Upload cancelled");
-            console.log(e);
-        },
-        pausedCallback: function(e) {
-            console.log("[app.js] Upload paused");
-            console.log(e);
         }
+    });
+
+    uploadRequest.addEventListener("success", function(e) {
+        console.log("[app.js] Upload complete");
+        console.log(e);
+    });
+    uploadRequest.addEventListener("error", function(e) {
+        console.log("[app.js] Upload error");
+        console.log(e);
+    });
+    uploadRequest.addEventListener("cancelled", function(e) {
+        console.log("[app.js] Upload cancelled");
+        console.log(e);
+    });
+    uploadRequest.addEventListener("paused", function(e) {
+        console.log("[app.js] Upload paused");
+        console.log(e);
     });
 
     S3TransferManager.upload(uploadRequest);
@@ -31,14 +32,17 @@ function doUpload() {
 Titanium.UI.setBackgroundColor('#000');
 
 var S3TransferManagerModule = require("com.thevirtualforge.s3filetransfermanager");
+
 var S3TransferManager = S3TransferManagerModule.createAWSS3TransferManager({
     identityPoolId: "eu-west-1:xxxx-xxxx-xxxx-xxxx-xxxx",
     region: "eu-west-1"
 });
 
-// To use a developer authenticated identity provider, pass in teh following params.
-// This assumes that you have made to AWS.CognitoIdentity.getOpenIdTokenForDeveloperIdentity
-// either via a API or directly elsewhere in your code
+/**
+ * To use a developer authenticated identity provider, pass in teh following params.
+ * This assumes that you have made to AWS.CognitoIdentity.getOpenIdTokenForDeveloperIdentity
+ * either via a API or directly elsewhere in your code
+ */
 S3TransferManager.initialise({
     // identityId returned from call to getOpenIdTokenForDeveloperIdentity
     identityId: "xxxxxx",
@@ -50,7 +54,9 @@ S3TransferManager.initialise({
     username: "myUsername"
 });
 
-// or to use unauthenticated
+/**
+ * ... or to use unauthenticated
+ */
 // S3TransferManager.initialise();
 
 var win1 = Titanium.UI.createWindow({
