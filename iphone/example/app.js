@@ -43,19 +43,23 @@ var S3TransferManager = S3TransferManagerModule.createAWSS3TransferManager({
  * This assumes that you have made to AWS.CognitoIdentity.getOpenIdTokenForDeveloperIdentity
  * either via a API or directly elsewhere in your code
  */
-S3TransferManager.initialise({
-    // identityId returned from call to getOpenIdTokenForDeveloperIdentity
-    identityId: "xxxxxx",
-    // token returned from call to getOpenIdTokenForDeveloperIdentity
-    token: "xxxxx",
-    // the name of the developer authenticated identity provider
-    developerAuthProviderName: "my.authentication.provider",
-    // username used in call to getOpenIdTokenForDeveloperIdentity
-    username: "myUsername"
-});
+
+// identityId returned from call to getOpenIdTokenForDeveloperIdentity
+S3TransferManager.identityId = "xxxxxx";
+
+// token returned from call to getOpenIdTokenForDeveloperIdentity
+S3TransferManager.token = "xxxxx";
+
+// the name of the developer authenticated identity provider
+S3TransferManager.developerAuthProviderName = "my.authentication.provider";
+
+// username used in call to getOpenIdTokenForDeveloperIdentity
+S3TransferManager.username = "myUsername";
+
+S3TransferManager.initialise();
 
 /**
- * ... or to use unauthenticated
+ * ... or to use unauthenticated, just:
  */
 // S3TransferManager.initialise();
 

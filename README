@@ -1,106 +1,19 @@
-Appcelerator Titanium Mobile Module Project
-===========================================
+# ti.S3FileTransferManager
 
-This is a skeleton Titanium Mobile Mobile module project.
+This Titanium module is an attempt to wrap the S3 file transfer portion of the AWS Mobile SDK. This has been
+built primarily for an in-house project and as such is designed to meet our specific requirements.
 
+Currently, it has the following limitations:
 
-MODULE NAMING
--------------
+* iOS only (Android planned... maybe)
+* Upload only
+* Only unauthenticated and developer provider authentication are currently supported.
 
-Choose a unique module id for your module.  This ID usually follows a namespace
-convention using DNS notation.  For example, com.appcelerator.module.test.  This
-ID can only be used once by all public modules in Titanium.
+## Documentation
+Documentation can be found in the documentation folder.
 
+## Complete example
+A complete example can be found in `iphone/example/app.js`.
 
-GET STARTED
-------------
-
-1. Edit manifest with the appropriate details about your module.
-2. Edit LICENSE to add your license details.
-3. Place any assets (such as PNG files) that are required anywhere in the module folder.
-4. Edit the timodule.json and configure desired settings.
-5. Code and build.
-
-
-DOCUMENTATION FOR YOUR MODULE
------------------------------
-
-You should provide at least minimal documentation for your module in `documentation` folder using the Markdown syntax.
-
-For more information on the Markdown syntax, refer to this documentation at:
-
-<http://daringfireball.net/projects/markdown/>
-
-
-TEST HARNESS EXAMPLE FOR YOUR MODULE
-------------------------------------
-
-The `example` directory contains a skeleton application test harness that can be
-used for testing and providing an example of usage to the users of your module.
-
-
-BUILDING YOUR MODULE
---------------------
-
-Simply run `titanium build --platform <name of platform> --build-type production --dir /path/to/module`.
-You can omit the --dir option if your working directory is in the module's project directory.
-
-
-INSTALL YOUR MODULE
--------------------
-
-Mac OS X
---------
-Copy the distribution zip file into the `~/Library/Application Support/Titanium` folder
-
-Linux
------
-Copy the distribution zip file into the `~/.titanium` folder
-
-Windows
--------
-Copy the distribution zip file into the `C:\ProgramData\Titanium` folder
-
-
-REGISTER YOUR MODULE
---------------------
-
-Register your module with your application by editing `tiapp.xml` and adding your module.
-Example:
-
-<modules>
-	<module version="0.1">com.thevirtualforge.s3filetransfermanager</module>
-</modules>
-
-When you run your project, the compiler will combine your module along with its dependencies
-and assets into the application.
-
-
-USING YOUR MODULE IN CODE
--------------------------
-
-To use your module in code, you will need to require it.
-
-For example,
-
-	var my_module = require('com.thevirtualforge.s3filetransfermanager');
-	my_module.foo();
-
-
-TESTING YOUR MODULE
--------------------
-
-To test with the script, execute:
-
-	titanium run --dir=YOURMODULEDIR
-
-This will execute the app.js in the example folder as a Titanium application.
-
-
-DISTRIBUTING YOUR MODULE
--------------------------
-
-You can choose to manually distribute your module distribution zip file or through the Titanium Marketplace!
-
-
-Cheers!
+## Disclaimer
+I am not a native developer! Building this module was quite challenging for me and I expect the code is less than optimal. Pull Requests and / or advice are very welcome :)

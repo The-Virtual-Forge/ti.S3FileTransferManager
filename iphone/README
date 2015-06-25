@@ -1,151 +1,185 @@
-Appcelerator Titanium iPhone Module Project
-===========================================
+# S3 File Transfer Manager
 
-This is a skeleton Titanium Mobile iPhone module project.  Modules can be 
-used to extend the functionality of Titanium by providing additional native
-code that is compiled into your application at build time and can expose certain
-APIs into JavaScript. 
+This Titanium module is an attempt to wrap the S3 file transfer portion of the AWS Mobile SDK. This has been
+built primarily for an in-house project and as such is designed to meet our specific requirements.
 
-MODULE NAMING
---------------
+Currently, it has the following limitations:
 
-Choose a unique module id for your module.  This ID usually follows a namespace
-convention using DNS notation.  For example, com.appcelerator.module.test.  This
-ID can only be used once by all public modules in Titanium.
+* iOS only (Android planned... maybe)
+* Upload only
+* Only unauthenticated and developer provider authentication are currently supported.
 
+## Setup
 
-COMPONENTS
------------
+Setup is fairly standard: download the zip file and install the module as per the [Installing modules](http://docs.appcelerator.com/platform/latest/#!/guide/Using_a_Module-section-30082372_UsingaModule-Installingmodules) page of the Appcelerator docs.
 
-Components that are exposed by your module must follow a special naming convention.
-A component (widget, proxy, etc) must be named with the pattern:
+### Copy AWS JSON definitions files
+The underlying AWS SDK needs a pair of JSON-formatted service definition files to operate. These can be found in the "platform" folder of the module and should be copied to the /platform/xxxx folder of your project.
 
-	Ti<ModuleName><ComponentName>Proxy
+From the command line, if you are in your Titanium project root:
 
-For example, if you component was called Foo, your proxy would be named:
+```
+cp modules/iphone/com.thevirtualforge.s3filetransfermanager/1.0.1/platform/iphone/*.json platform/iphone
+```
 
-	TiMyfirstFooProxy
-	
-For view proxies or widgets, you must create both a view proxy and a view implementation. 
-If you widget was named proxy, you would create the following files:
+## Import the module
+To initialise the module, require it where needed:
 
-	TiMyfirstFooProxy.h
-	TiMyfirstFooProxy.m
-	TiMyfirstFoo.h
-	TiMyfirstFoo.m
-	
-The view implementation is named the same except it does contain the suffix `Proxy`.  
+```
+var S3TransferManagerModule = require("com.thevirtualforge.s3filetransfermanager");
+```
 
-View implementations extend the Titanium base class `TiUIView`.  View Proxies extend the
-Titanium base class `TiUIViewProxy` or `TiUIWidgetProxy`.  
+## AWSS3TransferManager
+Use the `createAWSS3TransferManager` method of S3TransferManager to create a new AWSS3TransferManager object.
 
-For proxies that are simply native objects that can be returned to JavaScript, you can 
-simply extend `TiProxy` and no view implementation is required.
+Pass the following params to `createAWSS3TransferManager` when creating the AWSS3TransferManager object:
 
+* __region__ _{String}_ One of the preset AWS regions (Required).
 
-GET STARTED
-------------
-
-1. Edit manifest with the appropriate details about your module.
-2. Edit LICENSE to add your license details.
-3. Place any assets (such as PNG files) that are required in the assets folder.
-4. Edit the titanium.xcconfig and make sure you're building for the right Titanium version.
-5. Code and build.
-
-BUILD TIME COMPILER CONFIG
---------------------------
-
-You can edit the file `module.xcconfig` to include any build time settings that should be
-set during application compilation that your module requires.  This file will automatically get `#include` in the main application project.  
-
-For more information about this file, please see the Apple documentation at:
-
-<http://developer.apple.com/mac/library/documentation/DeveloperTools/Conceptual/XcodeBuildSystem/400-Build_Configurations/build_configs.html>
-
-
-DOCUMENTATION FOR YOUR MODULE
------------------------------
-
-You should provide at least minimal documentation for your module in `documentation` folder using the Markdown syntax.
-
-For more information on the Markdown syntax, refer to this documentation at:
-
-<http://daringfireball.net/projects/markdown/>
-
-
-TEST HARNESS EXAMPLE FOR YOUR MODULE
-------------------------------------
-
-The `example` directory contains a skeleton application test harness that can be 
-used for testing and providing an example of usage to the users of your module.
-
-
-INSTALL YOUR MODULE
---------------------
-
-1. Run `build.py` which creates your distribution
-2. cd to `/Library/Application Support/Titanium`
-3. copy this zip file into the folder of your Titanium SDK
-
-REGISTER YOUR MODULE
----------------------
-
-Register your module with your application by editing `tiapp.xml` and adding your module.
 Example:
 
-<modules>
-	<module version="0.1">__MODULE_ID__</module>
-</modules>
+```
+eu-west-1
+```
 
-When you run your project, the compiler will know automatically compile in your module
-dependencies and copy appropriate image assets into the application.
+* __identityPoolId__ _{String}_ This can be found in the id param of the URL for your Cognito Identity Pool in AWS (Required).
 
-USING YOUR MODULE IN CODE
--------------------------
+Example URL:
 
-To use your module in code, you will need to require it. 
+```
+https://eu-west-1.console.aws.amazon.com/cognito/pool/?region=eu-west-1&id=eu-west-1:vvvvv-wwwww-xxxxxx-yyyyyy-zzzzzzz
+```
 
-For example,
+Use only the portion after "id=".
 
-	var my_module = require('__MODULE_ID__');
-	my_module.foo();
+### Example of creating an AWSS3TransferManager
+```
+var S3TransferManager = S3TransferManagerModule.createAWSS3TransferManager({
+    identityPoolId: "eu-west-1:xxxx-xxxx-xxxx-xxxx-xxxx",
+    region: "eu-west-1"
+});
+```
 
-WRITING PURE JS NATIVE MODULES
-------------------------------
+### Configure & initialise the AWSS3TransferManager
+If authentication is required, configure the AWSS3TransferManager by directly assigning properties to it then call it's `initialise` method. For unauthenticated uploads, simply call `initialise`.
 
-You can write a pure JavaScript "natively compiled" module.  This is nice if you
-want to distribute a JS module pre-compiled.
+#### Authenticated S3 bucket access
+If the cognito identity pool attached to your S3 bucket requires authentication, the transferManager needs to be configured with a number of params, all required.
 
-To create a module, create a file named __MODULE_ID__.js under the assets folder.
-This file must be in the Common JS format.  For example:
+Only developer authenticated identity providers are currently supported and you'll need whatever backend solution you implement to forward an identityId & token, as returned by AWS, to your app.
 
-	exports.echo = function(s)
-	{
-		return s;
-	};
-	
-Any functions and properties that are exported will be made available as part of your
-module.  All other code inside your JS will be private to your module.
+##### Params
 
-For pure JS module, you don't need to modify any of the Objective-C module code. You
-can leave it as-is and build.
+* __identityId__ _{String}_ The identityId as returned from your developr authenticated identity provider (Required).
 
-TESTING YOUR MODULE
--------------------
+* __token__ _{String}_ The token as returned  from your developr authenticated identity provider (Required).
 
-Run the `titanium.py` script to test your module or test from within XCode.
-To test with the script, execute:
+* __username__ _{String}_ The username of the autheticated username (Required).
 
-	titanium run --dir=YOURMODULEDIR
-	
+* __developerAuthProviderName__ _{String}_ The name of your develeloper authenticated identity provider (Required).
 
-This will execute the app.js in the example folder as a Titanium application.
+##### Example
+```
+// identityId returned from call to getOpenIdTokenForDeveloperIdentity
+S3TransferManager.identityId = "xxxxxx";
 
+// token returned from call to getOpenIdTokenForDeveloperIdentity
+S3TransferManager.token = "xxxxx";
 
-DISTRIBUTING YOUR MODULE
--------------------------
+// the name of the developer authenticated identity provider
+S3TransferManager.developerAuthProviderName = "my.authentication.provider";
 
-Currently, you will need to manually distribution your module distribution zip file directly. However, in the near future, we will make module distribution and sharing built-in to Titanium Developer and in the Titanium Marketplace!
+// username used in call to getOpenIdTokenForDeveloperIdentity
+S3TransferManager.username = "myUsername";
 
+S3TransferManager.initialise();
+```
 
-Cheers!
+#### Unauthenticated S3 bucket access
+If the Cognito Identity pool used by your S3 bucket allows unauthenticated access, simply call the `initialise` method with no params:
+
+##### Example
+```
+S3TransferManager.initialise();
+```
+
+## AWSS3TransferManagerUploadRequest
+To upload a file, you must first create an AWSS3TransferManagerUploadRequest object using createAWSS3TransferManagerUploadRequest method of the S3TransferManagerModule and pass it a number of params:
+
+### Properties
+* __bucket__ _{String}_ The name of the S3 bucket to upload to
+
+* __key__ _{String}_ The key to be used for the name of the file in the S3 bucket
+
+* __body__ _{String}_ A path to the file to be uploaded
+
+* __progressCallback__ _{Function} Callback function to be called upon upload progress. As this gets called many times in quick succession, you may want to consider throttling it.
+
+### Events
+The uploadRequest object fires a number of events to indicate upload status
+
+* __success__
+Fired when the upload completes successfully
+
+* __error__
+Fired when an upload error occurs
+
+* __cancelled__
+Fired when an upload is cancelled
+
+* __paused__
+Fired when an uploaded is paused
+
+### Methods
+
+* __pauseUpload__Pauses the upload.
+
+### Example
+```
+var uploadRequest = S3TransferManagerModule.createAWSS3TransferManagerUploadRequest({
+	bucket: "my-bucket-name",
+	key: file.name,
+	body: file.nativePath,
+	progressCallback: function(e) {
+		console.log("[app.js] Upload progress");
+		console.log(e);
+	}
+});
+
+uploadRequest.addEventListener("success", function(e) {
+	console.log("[app.js] Upload complete");
+	console.log(e);
+});
+
+uploadRequest.addEventListener("error", function(e) {
+	console.log("[app.js] Upload error");
+	console.log(e);
+});
+
+uploadRequest.addEventListener("cancelled", function(e) {
+	console.log("[app.js] Upload cancelled");
+	console.log(e);
+});
+
+uploadRequest.addEventListener("paused", function(e) {
+	console.log("[app.js] Upload paused");
+	console.log(e);
+});
+
+// Start the upload
+S3TransferManager.upload(currentUploadRequest);
+
+// Pause the upload
+currentUploadRequest.pauseUpload();
+
+// Resume the upload (note it's the same as starting the upload)
+S3TransferManager.upload(currentUploadRequest);
+```
+
+## Complete example
+
+A complete example can be found in `iphone/example/app.js`.
+
+## Disclaimer
+
+I am not a native developer! Building this module was quite challenging for me and I expect the code is less than optimal. Pull Requests and / or advice are very welcome :)
