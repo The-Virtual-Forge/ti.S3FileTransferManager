@@ -7,7 +7,7 @@ apiversion: 2
 architectures: armv7 arm64 i386 x86_64
 description: S3FileTransferManager
 author: Terry Morgan
-license: Apache 2.0
+license: Apache license, version 2.0
 copyright: Copyright (c) 2015 by The Virtual Forge
 
 # these should not be edited
