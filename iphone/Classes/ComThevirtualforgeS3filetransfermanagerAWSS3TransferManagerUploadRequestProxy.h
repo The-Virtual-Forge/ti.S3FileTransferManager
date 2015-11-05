@@ -16,6 +16,7 @@
 
     NSString *bucket;
     NSString *key;
+    NSDictionary *metadata;
     NSURL *body;
 
 }
@@ -33,6 +34,7 @@
 - uploadRequest;
 - body;
 - key;
+- metadata;
 - bucket;
 
 @end

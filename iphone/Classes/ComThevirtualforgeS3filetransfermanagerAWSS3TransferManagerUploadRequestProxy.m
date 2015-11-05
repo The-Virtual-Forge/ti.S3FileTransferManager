@@ -20,12 +20,19 @@
     
     ur.bucket = [properties objectForKey:@"bucket"];
     ur.key = [properties objectForKey:@"key"];
+    
+    id _metadata = [properties objectForKey:@"metadata"];
+    if (_metadata) {
+        ur.metadata = _metadata;
+    }
+    
     ur.body = [NSURL URLWithString:[properties objectForKey:@"body"]];
     
     KrollCallback* progressCallback = [properties objectForKey:@"progressCallback"];
     
     ur.uploadProgress =  ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend){
         dispatch_sync(dispatch_get_main_queue(), ^{
+            NSLog(@"Calling progress callback");
             if (progressCallback) {
                 NSDictionary *eventData = @{
                                            @"bytesSent": [NSNumber numberWithLongLong:bytesSent],
@@ -58,6 +65,7 @@
     [key release];
     [bucket release];
     [body release];
+    [metadata release];
 
     [super dealloc];
 }
@@ -121,6 +129,11 @@
     return bucket;
 }
 
+-(NSDictionary *)metadata
+{
+    return metadata;
+}
+
 - (void)setUploadRequest:(AWSS3TransferManagerUploadRequest *)ur
 {
     [uploadRequest autorelease];
@@ -143,6 +156,12 @@
 {
     [bucket autorelease];
     bucket = [TiUtils stringValue:_bucket];
+}
+
+-(void)setMetadata:(id)_metadata
+{
+    [metadata autorelease];
+    metadata = _metadata;
 }
 
 -(void)pauseUpload:(id)args
@@ -168,6 +187,7 @@
 
 -(void)onPaused
 {
+    NSLog(@"onPaused");
     if ([self _hasListeners:@"paused"]) {
         NSDictionary *eventPayload = @{
                                        @"success": @false,
@@ -182,6 +202,7 @@
 
 -(void)onCancelled
 {
+    NSLog(@"onCancelled");
     if ([self _hasListeners:@"cancelled"]) {
         NSDictionary *eventPayload = @{
                                        @"success": @false,
@@ -196,6 +217,7 @@
 
 -(void)onSuccess:(AWSS3TransferManagerUploadOutput *)result
 {
+    NSLog(@"onSuccess");
     if ([self _hasListeners:@"success"]) {
         NSDictionary *eventPayload = @{
                                        @"success": @true,
@@ -213,6 +235,7 @@
 
 -(void)onError:(NSError *)error
 {
+    NSLog(@"onError");
     if ([self _hasListeners:@"error"]) {
         NSDictionary *eventPayload = @{
                                        @"success": @false,

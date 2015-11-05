@@ -26,5 +26,5 @@
 // IMPORTANT NOTE: always use $(inherited) in your overrides
 //
 
-FRAMEWORK_SEARCH_PATHS=$(SRCROOT)/../../modules/iphone/com.thevirtualforge.s3filetransfermanager/1.0.1/platform/iphone
+FRAMEWORK_SEARCH_PATHS=$(SRCROOT)/../../modules/iphone/com.thevirtualforge.s3filetransfermanager/1.0.2/platform/iphone
 OTHER_LDFLAGS=$(inherited) -ObjC -framework AWSCore -framework AWSS3 -framework Bolts -framework GZIP -framework Mantle -framework Reachability -framework TMCache -framework UICKeyChainStore -framework XMLDictionary
