@@ -116,7 +116,7 @@
     ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerUploadRequestProxy *urProxy = [ur objectAtIndex:0];
     AWSS3TransferManagerUploadRequest *uploadRequest = [urProxy valueForKey:@"uploadRequest"];
     
-    [[self.transferManager upload:uploadRequest] continueWithBlock:^id(BFTask *task) {
+    [[self.transferManager upload:uploadRequest] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
             if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
                 switch (task.error.code) {
@@ -159,7 +159,7 @@
     //    [currentUploads enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     //        if ([obj isKindOfClass:[AWSS3TransferManagerUploadRequest class]]) {
     //            AWSS3TransferManagerUploadRequest *uploadRequest = obj;
-    //            [[uploadRequest pause] continueWithBlock:^id(BFTask *task) {
+    //            [[uploadRequest pause] continueWithBlock:^id(AWSTask *task) {
     //                if (task.error) {
     //                    NSLog(@"The pause request failed: [%@]", task.error);
     //                }
@@ -174,7 +174,7 @@
     //    [currentUploads enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     //        if ([obj isKindOfClass:[AWSS3TransferManagerUploadRequest class]]) {
     //            AWSS3TransferManagerUploadRequest *uploadRequest = obj;
-    //            [[transferManager upload:uploadRequest] continueWithBlock:^id(BFTask *task) {
+    //            [[transferManager upload:uploadRequest] continueWithBlock:^id(AWSTask *task) {
     //                if (task.error) {
     //                    NSLog(@"The resume request failed: [%@]", task.error);
     //                }

@@ -28,8 +28,8 @@
 		24DE9E1211C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComThevirtualforgeS3filetransfermanagerModuleAssets.m */; };
 		AA747D9F0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		FF59CC2C1B3B11C500906082 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF59CC291B3B11C500906082 /* AWSCore.framework */; };
-		FF59CC2D1B3B11C500906082 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF59CC2A1B3B11C500906082 /* AWSS3.framework */; };
+		FF49C4E01BEBC8AC00B218FF /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF49C4DE1BEBC8AC00B218FF /* AWSCore.framework */; };
+		FF49C4E11BEBC8AC00B218FF /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF49C4DF1BEBC8AC00B218FF /* AWSS3.framework */; };
 		FF59CC2E1B3B11C500906082 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF59CC2B1B3B11C500906082 /* Bolts.framework */; };
 		FFB0EAF41B14CDD100338B0D /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB0EAF31B14CDD100338B0D /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.m */; };
 		FFB0EAF61B14CDF300338B0D /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = FFB0EAF51B14CDF300338B0D /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.h */; };
@@ -70,8 +70,8 @@
 		AA747D9E0F9514B9006C5449 /* ComThevirtualforgeS3filetransfermanager_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComThevirtualforgeS3filetransfermanager_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libComThevirtualforgeS3filetransfermanager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComThevirtualforgeS3filetransfermanager.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF59CC291B3B11C500906082 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = platform/iphone/AWSCore.framework; sourceTree = "<group>"; };
-		FF59CC2A1B3B11C500906082 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = platform/iphone/AWSS3.framework; sourceTree = "<group>"; };
+		FF49C4DE1BEBC8AC00B218FF /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = platform/iphone/AWSCore.framework; sourceTree = "<group>"; };
+		FF49C4DF1BEBC8AC00B218FF /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = platform/iphone/AWSS3.framework; sourceTree = "<group>"; };
 		FF59CC2B1B3B11C500906082 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = platform/iphone/Bolts.framework; sourceTree = "<group>"; };
 		FFB0EAF31B14CDD100338B0D /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.m; path = Classes/ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.m; sourceTree = "<group>"; };
 		FFB0EAF51B14CDF300338B0D /* ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.h; path = Classes/ComThevirtualforgeS3filetransfermanagerAWSS3TransferManagerProxy.h; sourceTree = "<group>"; };
@@ -86,10 +86,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF49C4E11BEBC8AC00B218FF /* AWSS3.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
-				FF59CC2C1B3B11C500906082 /* AWSCore.framework in Frameworks */,
-				FF59CC2D1B3B11C500906082 /* AWSS3.framework in Frameworks */,
 				FF59CC2E1B3B11C500906082 /* Bolts.framework in Frameworks */,
+				FF49C4E01BEBC8AC00B218FF /* AWSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,8 +118,8 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FF59CC291B3B11C500906082 /* AWSCore.framework */,
-				FF59CC2A1B3B11C500906082 /* AWSS3.framework */,
+				FF49C4DE1BEBC8AC00B218FF /* AWSCore.framework */,
+				FF49C4DF1BEBC8AC00B218FF /* AWSS3.framework */,
 				FF59CC2B1B3B11C500906082 /* Bolts.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
@@ -284,6 +284,7 @@
 					"$(PROJECT_DIR)/platform",
 					"$(PROJECT_DIR)/frameworks",
 					"$(PROJECT_DIR)/platform/iphone",
+					"$(PROJECT_DIR)/lib",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -331,6 +332,7 @@
 					"$(PROJECT_DIR)/platform",
 					"$(PROJECT_DIR)/frameworks",
 					"$(PROJECT_DIR)/platform/iphone",
+					"$(PROJECT_DIR)/lib",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;

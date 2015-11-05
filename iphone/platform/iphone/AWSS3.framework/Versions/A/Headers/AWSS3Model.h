@@ -1,4 +1,4 @@
-/**
+/*
  Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
  Licensed under the Apache License, Version 2.0 (the "License").
@@ -56,6 +56,7 @@ typedef NS_ENUM(NSInteger, AWSS3BucketLocationConstraint) {
     AWSS3BucketLocationConstraintBlank,
     AWSS3BucketLocationConstraintCNNorth1,
     AWSS3BucketLocationConstraintEUCentral1,
+    AWSS3BucketLocationConstraintUSGovWest1,
 };
 
 typedef NS_ENUM(NSInteger, AWSS3BucketLogsPermission) {
@@ -155,6 +156,7 @@ typedef NS_ENUM(NSInteger, AWSS3Protocols) {
 typedef NS_ENUM(NSInteger, AWSS3ServerSideEncryption) {
     AWSS3ServerSideEncryptionUnknown,
     AWSS3ServerSideEncryptionAES256,
+    AWSS3ServerSideEncryptionAwsKms,
 };
 
 typedef NS_ENUM(NSInteger, AWSS3StorageClass) {

@@ -4,17 +4,17 @@ dependencies: \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSService.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSNetworking.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSModel.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/Mantle.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/MTLJSONAdapter.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/MTLManagedObjectAdapter.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/MTLModel.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/MTLModel+NSCoding.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/MTLValueTransformer.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/NSArray+MTLManipulationAdditions.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/NSDictionary+MTLManipulationAdditions.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/NSObject+MTLComparisonAdditions.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/NSValueTransformer+MTLInversionAdditions.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Mantle.framework/Headers/NSValueTransformer+MTLPredefinedTransformerAdditions.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMantle.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMTLJSONAdapter.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMTLManagedObjectAdapter.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMTLModel.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMTLModel+NSCoding.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMTLValueTransformer.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/NSArray+AWSMTLManipulationAdditions.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/NSDictionary+AWSMTLManipulationAdditions.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/NSObject+AWSMTLComparisonAdditions.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/NSValueTransformer+AWSMTLInversionAdditions.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/NSValueTransformer+AWSMTLPredefinedTransformerAdditions.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSCredentialsProvider.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSServiceEnum.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSIdentityProvider.h \
@@ -31,32 +31,16 @@ dependencies: \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSCognitoIdentity.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSCognitoIdentityService.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSCognitoIdentityModel.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/MobileAnalytics.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMobileAnalytics.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMobileAnalyticsOptions.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMobileAnalyticsEventClient.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMobileAnalyticsEvent.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMobileAnalyticsConfiguration.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMobileAnalyticsMonetizationEventBuilder.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMobileAnalyticsAppleMonetizationEventBuilder.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSMobileAnalyticsVirtualMonetizationEventBuilder.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/Bolts.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BoltsVersion.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BFExecutor.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BFTask.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BFTaskCompletionSource.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BFAppLinkNavigation.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BFAppLink.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BFAppLinkTarget.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BFURL.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BFMeasurementEvent.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BFAppLinkReturnToRefererController.h \
-  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/Bolts.framework/Headers/BFAppLinkReturnToRefererView.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSBolts.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSExecutor.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSTask.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSCore.framework/Headers/AWSTaskCompletionSource.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSS3.framework/Headers/AWSS3.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSS3.framework/Headers/AWSS3Service.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSS3.framework/Headers/AWSS3Model.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSS3.framework/Headers/AWSS3TransferManager.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSS3.framework/Headers/AWSS3PreSignedURL.h \
+  /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/platform/iphone/AWSS3.framework/Headers/AWSS3TransferUtility.h \
   /Users/terrymorgan/Development/timodules/S3FileTransferManager/iphone/Classes/ComThevirtualforgeS3filetransfermanagerModule.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiModule.h \
   /Users/terrymorgan/Library/Application\ Support/Titanium/mobilesdk/osx/3.5.1.GA/iphone/include/TiProxy.h \

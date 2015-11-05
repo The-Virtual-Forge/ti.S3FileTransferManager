@@ -29,12 +29,12 @@
     return self;
 }
 
-- (BFTask *)getIdentityId {
-    return [BFTask taskWithResult:self.identityId];
+- (AWSTask *)getIdentityId {
+    return [AWSTask taskWithResult:self.identityId];
 }
 
-- (BFTask *)refresh {
-    return [BFTask taskWithResult:self.identityId];
+- (AWSTask *)refresh {
+    return [AWSTask taskWithResult:self.identityId];
 }
 
 @end

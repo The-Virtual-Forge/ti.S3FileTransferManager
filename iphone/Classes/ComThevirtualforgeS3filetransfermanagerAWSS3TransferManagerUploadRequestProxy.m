@@ -166,7 +166,7 @@
 
 -(void)pauseUpload:(id)args
 {
-    [[uploadRequest pause] continueWithBlock:^id(BFTask *task) {
+    [[uploadRequest pause] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
             NSLog(@"The pause request failed: [%@]", task.error);
         }
@@ -177,7 +177,7 @@
 -(void)cancel:(id)args
 
 {
-    [[uploadRequest cancel] continueWithBlock:^id(BFTask *task) {
+    [[uploadRequest cancel] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
             NSLog(@"The cancel request failed: [%@]", task.error);
         }
